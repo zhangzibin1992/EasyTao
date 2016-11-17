@@ -1,5 +1,7 @@
 package zhuoxinzhiqu.easytao;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -40,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tv_title = (TextView) findViewById(R.id.main_title);//用butterknife拿则无法设置字体
+        AssetManager mgr=getAssets();//得到AssetManager
+        Typeface tf=Typeface.createFromAsset(mgr, "fonts/yegenyou.ttf");//根据路径得到Typeface
+        tv_title.setTypeface(tf);//设置字体 叶根友毛笔字体
 
         unbinder = ButterKnife.bind(this);
 
